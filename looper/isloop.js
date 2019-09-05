@@ -16,6 +16,20 @@ const isLoop = (linkedlist) => {
 };
 //jdjkdjdjdjd
 
+const otherLoop = (linkedlist) => {
+  let slowpointer = linkedlist.head;
+  let fastpointer = linkedlist.head;
+  while (fastpointer.next && fastpointer.next.next) {
+    fastpointer = fastpointer.next.next;
+    slowpointer = slowpointer.next;
+    console.log('fast: ', fastpointer.value, ' slow: ', slowpointer.value);
+    if (fastpointer === slowpointer) {
+      return true;
+    }
+  }
+  return false;
+};
+
 /*
 EXTRA CREDIT:
 
@@ -39,7 +53,7 @@ const findLoop = (linkedlist) => {
           return current.value;
       } else {
           visited.push(current.value);
-          current = current.next
+          current = current.next;
       }
   }
   return false;
@@ -49,4 +63,4 @@ const findLoop = (linkedlist) => {
 
 
 
-module.exports = {isLoop, findLoop};
+module.exports = {isLoop, findLoop, otherLoop};
